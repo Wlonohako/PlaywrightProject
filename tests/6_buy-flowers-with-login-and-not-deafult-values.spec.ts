@@ -38,7 +38,7 @@ test('BUY_FLOWERS_WITH_LOGIN_AND_NOT_DEAFULT_VALUES', async () => {
     }
     const flowerNumberExist = await page.isVisible('.quantityInput > input[type="text"]');
     if (flowerNumberExist) {
-        const randomNumber = Math.floor(Math.random() * (999 - 10 + 1)) + 10;
+        const randomNumber = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
         console.log("randomNumber", randomNumber)
         await page.locator('.quantityInput > input[type="text"]').fill(randomNumber.toString());
     }
@@ -110,17 +110,15 @@ test('BUY_FLOWERS_WITH_LOGIN_AND_NOT_DEAFULT_VALUES', async () => {
         const randomItemIndex = Math.floor(Math.random() * numberOfItems);
         console.log(`Random item index: ${randomItemIndex}`);
         const randomItem = await page.locator('.extensionsList > .extItem').nth(randomItemIndex);
-        console.log(`worked`);
-        const randomNumber = Math.floor(Math.random() * (999 - 10 + 1)) + 10;
+        const randomNumber = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
         console.log(`Random number: ${randomNumber}`);
         await randomItem.locator('.iqInput').click();
         await randomItem.locator('.iqInput').fill(randomNumber.toString());
     }
+
     await page.getByText('Ok', { exact: true }).click();
 
-
-
-    await page.getByRole('button', { name: 'Do koszyka' }).click();
+    await page.locator('input[type="submit"][value="Do koszyka"]').click();
     await page.getByRole('button', { name: 'Zamów' }).click();
     await page.locator('#page').getByRole('link', { name: 'Zaloguj' }).click();
 
