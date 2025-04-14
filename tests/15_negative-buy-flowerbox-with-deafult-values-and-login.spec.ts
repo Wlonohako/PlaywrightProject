@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 
 test('NEGATIVE_BUY_FLOWERBOX_WITH_DEAFULT_VALUES_AND_LOGIN', async () => {
     const browser = await chromium.launch({
-        headless: false,
+        headless: true,
         slowMo: 500,
         timeout: 0,
     });

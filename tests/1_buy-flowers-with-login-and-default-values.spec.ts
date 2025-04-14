@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 
 test('BUY_FLOWERS_WITH_LOGIN_AND_DEFAULT_VALUES', async () => {
     const browser = await chromium.launch({
-        headless: false,
+        headless: true,
         slowMo: 500,
         timeout: 0,
     });
